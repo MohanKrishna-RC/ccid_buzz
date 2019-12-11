@@ -1,0 +1,4 @@
+component_depth: 1
+languages:
+- python:2.7
+- python -m pytest -v
