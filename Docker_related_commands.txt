@@ -1,0 +1,46 @@
+First create a Dockerfile
+
+# Build a Docker image
+docker build -t app:tag #building the image
+
+# Show Docker images
+docker images
+
+# Run a Docker container specifying a name
+docker run -d -p 5000:5000 app:tag # creating the containers
+
+# Fetch the logs of a container
+docker logs -f [container_id_or_name]
+
+# Run a command in a running container
+$ docker exec -it [container_id_or_name] bash
+
+# Show all containers
+docker ps
+docker ps -a #after this we can see few docker containers that are created w.r.t to docker images.
+
+# Stop a Docker container
+docker stop NAMES
+
+# Remove a Docker container
+docker rm NAMES
+docker rm CONTAINER_ID
+
+# Remove a Docker image
+docker rmi image
+
+
+# Stop all running containers
+$ docker stop $(docker ps -q)
+
+# Remove all containers
+$ docker rm $(docker ps -aq)
+
+# Remove all images
+$ docker rmi $(docker images -aq)
+
+
+
+#If we run the docker images command we will see our flask_app with tag 0.1 in that list. 
+#To remove our flask_app image we can use the docker rmi command.
+
