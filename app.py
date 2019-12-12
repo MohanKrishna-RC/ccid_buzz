@@ -1,3 +1,5 @@
+# It will import the Flask package, create a Flask app,
+# define a route and run the application in debug mode on localhost.
 import os
 from flask import Flask
 from buzz import generator
@@ -5,7 +7,7 @@ from buzz import generator
 app = Flask(__name__)
 
 @app.route("/")
-def generate_buzz():
+def generate_buzz(): 
     page = '<html><body><h1>'
     page += generator.generate_buzz()
     page += '</h1></body></html>'
@@ -13,3 +15,4 @@ def generate_buzz():
 
 if __name__ == "__main__":
     app.run(host='0.0.0.0', port=int(os.getenv('PORT', 5000)))
+
