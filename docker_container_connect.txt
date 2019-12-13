@@ -1,0 +1,83 @@
+The whole point of availability of docker container 
+
+1. Alleviate cross-platform compatibility issues.
+2. Simplify the setup of dev environments.
+3. Allow deveplopers to conduct independent integration tests.
+
+
+From the way the problem is analyzed, Docker can fit the bill. Using containers as development machines will allow developers to get started with minimal setuo. In principle, the development environment would be attracted from the host OS by having it run in a container.
+
+This allows developers to work on a common container configuration that runs on the same OS and toolset, thereby eliminating cross-platform compatibilty issues almost completely.
+
+In theory, developers would only need to download Docker and a text editor of their choice, and not hae to install external tools and dependencies. Code exits will be done from the editor as per normal and the changes will be tracked and propagated from host to the container. This simplifies intial setup.
+
+In fact, using a running container for development is optional. Developers may just some containers to develop on the service that someone is working on, while the other containers will just be used to host and run the applications. This gives developers the ability to conduct on-demand integration tests by spinning up containers for the required services.
+
+
+
+
+
+
+
+
+
+Architecture of a Docker Container.
+
+Containers are not as complex as they sound, turns out they are pretty simple concept and so is their architecture, a docker container is simply a service running on a setup.
+
+Our containers run on the docker architecture using the configuration in the DockerFile, the docker-compose.yml file or the image specified in the docker run command to set up the containers. These containers usually have exposed ports if they are to connect to each other.
+
+The containers are services on their own and can work off each other using resources from the other via the network setup in them, these networks are created the docker-compose file.
+
+
+The docker file setup typically sets you up with images, a profile based on which the container is created.
+
+Write the complete process logic.
+Setup the Docker image
+start building the image and then deploy.
+
+This step runs a process to build our images, after this we can add our image to docker hub to be able to pull them from anywhere.
+
+docker images...
+
+From this list output get the id of our images and tag our image with the repositories name.
+
+Next, you can push this to dockerhub.
+
+docker push username/reponame
+
+After this running, the container is a breeze.
+
+docker run command..
+
+A Container is launched and set.
+
+
+Connecting Containers.
+
+To connect our container with another container we can set this up using docker-compose, the fun part is we can run multiple containers and decentralized parts of the same application.
+
+To accomplish this we'll set up a docker-compose file and build the container from it, as a service, using the docker-compose setup we can set up mulitple containers as services and link them via the container's name.
+
+Using the links tag we connected the application container or service to the other service, and with the volume tag we set up a directory data in our project folder as the data volume of the other container, using the link in the application's configurations we can connect to the other container's service using the name of that container as the service's address and the exposed port "4000" as the port in the container.
+
+###########
+But this method of connecting containers limits us to a project set therefore we can't connect containers across two different projects.
+###########
+
+Using the networks tags we can set up a network that we can use across different containers and project bases.
+
+With the network setup, the containers are connected to the backened network, therefore, external containers can also connect with the backened network to be able to access the services in it.
+
+To get a list of networks connected to the container supply run this command,.
+
+docker network ls
+
+Using the network name we can connect external content to the network using the command
+
+docker network connect <network_name> <container_name>
+
+to be able to view the containers with access to the network simply run the command.
+
+docker inspect <network_name>
+
