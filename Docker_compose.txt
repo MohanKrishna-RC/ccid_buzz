@@ -1,0 +1,66 @@
+Docker-compose...
+
+Docker-compose is a tool provided bt Docker. This tool is implemented to solve architectural problems in our projects.
+
+We as a developer, we rarely create a stand alone program ( a program that does not require any other services to run, such as a database.)
+
+How do we know we need Docker-compose?
+
+If our application requires several services to run, we need Docker-compose.
+Let suppose, if we create a website that needs to connect to our database to authenticate users ( here 2 services, website, and database).
+
+Docker compose offers us the possibility to launch all these services in a single command.
+
+Difference between Docker and Docker compose...
+
+
+Docker is used to manage an individual container (service) for our application.
+
+Docker compose is used to manage several containers at the same time for the same application. This offers the same feature as Docker but allows us to have more complex applications.
+
+Docker ( individual container) -- Docker container ( several containers)
+
+Using Docker-compose will help us to deploy our entire architecture in new server very easily. All we have to do is make a few configurations and load the backup of our database to finalize the migration.
+
+creating application with Docker-compose..
+
+---Create the project.
+
+1. docker-compose.yml file ( docker-compose file that will contain the necessary instructions to create the different services)
+
+2. A 'server' folder ( this folder will contain the files necessary to set up the server)
+
+3. A 'client' fodler ( this folder will contain the files necessary to set up the client)
+
+--- Create server..
+
+Inside the server folder..
+
+1. A 'server.py' file ( python file that will contain the server code)
+2. An 'index.html' file ( HTML file that will contain the sentence to be displayed)
+3. A 'Dockerfile' ( docker file that will contain the necessary instructions to create the environment of the server)
+
+--- Create client folder same as server folder...
+
+
+-- filling the Docker-compose...
+
+Docker-compose.yml fill it..
+
+
+---Build Docker-compose..
+
+once the docker-compose is set up, your client/server application need to be built. This step corresponds to the 'docker build' command but applied to the different services.
+
+docker-compose build
+
+
+---Run docker-Compose..
+
+docker-compose up
+
+
+
+
+
+
